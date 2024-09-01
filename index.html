@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSS Scraper Logs</title>
+</head>
+<body>
+    <h1>Real-Time RSS Scraper Logs</h1>
+    <pre id="log"></pre>
+
+    <script>
+        const eventSource = new EventSource('/stream');
+        const log = document.getElementById('log');
+
+        eventSource.onmessage = function(event) {
+            log.textContent += event.data + "\n";
+        };
+    </script>
+</body>
+</html>
+
